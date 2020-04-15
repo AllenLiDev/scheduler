@@ -1,10 +1,9 @@
-import "./styles.scss";
 import React from "react";
-import Header from "./Header";
+import "./styles.scss";
 
 const Appointment = (props) => {
   return (
-    <article className="appointment"></article>
+    <article className="appointment">{props.time}</article>
   )
 }
 
