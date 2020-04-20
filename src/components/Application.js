@@ -29,6 +29,38 @@ export default function Application(props) {
       })
   }, []);
 
+  function bookInterview(id, interview) {
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+    return axios.put(`/api/appointments/${id}`, appointment)
+      .then(() => {
+        setState({ ...state, appointments });
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
+  function cancelInterview(id) {
+    const appointment = {
+      ...state.appointments[id],
+      interview: null
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+    return axios.delete(`/api/appointments/${id}`, appointment)
+      .then(() => {
+        setState({ ...state, appointments });
+      });
+  }
 
   const interviewers = getInterviewersForDay(state, state.day);
   const appointments = getAppointmentsForDay(state, state.day);
@@ -41,6 +73,8 @@ export default function Application(props) {
         time={appointment.time}
         interview={interview}
         interviewers={interviewers}
+        bookInterview={bookInterview}
+        cancelInterview={cancelInterview}
       />
     )
   });
@@ -50,10 +84,23 @@ export default function Application(props) {
   return (
     <main className="layout">
       <section className="sidebar">
-        <DayList
-          days={state.days}
-          day={state.day}
-          setDay={day => setDay(day)}
+        <img
+          className="sidebar--centered"
+          src="images/logo.png"
+          alt="Interview Scheduler"
+        />
+        <hr className="sidebar__separator sidebar--centered" />
+        <nav className="sidebar__menu">
+          <DayList
+            days={state.days}
+            day={state.day}
+            setDay={setDay}
+          />
+        </nav>
+        <img
+          className="sidebar__lhl sidebar--centered"
+          src="images/lhl.png"
+          alt="Lighthouse Labs"
         />
       </section>
       <section className="schedule">

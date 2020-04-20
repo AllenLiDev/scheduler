@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "./Header";
 import Show from "./Show";
 import Empty from "./Empty";
@@ -24,6 +24,42 @@ const Appointment = (props) => {
     props.interview ? SHOW : EMPTY
   );
 
+  function save(name, interviewer) {
+    const interview = {
+      student: name,
+      interviewer
+    };
+    transition(SAVING);
+    props.bookInterview(props.id, interview)
+      .then(() => {
+        transition(SHOW);
+      })
+      .catch((err) => {
+        transition(ERROR_SAVE, true);
+      });
+  }
+
+  function cancelAppointment() {
+    transition(DELETING, true);
+    props.cancelInterview(props.id)
+      .then(() => {
+        transition(EMPTY);
+      })
+      .catch((err) => {
+        transition(ERROR_DELETE, true);
+      });
+  }
+
+  useEffect(() => {
+    if (mode === EMPTY && props.interview) {
+      transition(SHOW);
+    }
+    if (mode === SHOW && !props.interview) {
+      transition(EMPTY);
+    }
+  });
+
+
   return (
     <article className="appointment">
       <Header time={props.time} />
@@ -31,7 +67,7 @@ const Appointment = (props) => {
       {mode === SHOW && (
         <Show
           student={props.interview.student}
-          interviewer={props.interview.interviewer}
+          interviewer={props.interview.interviewer ? props.interview.interviewer : "None"}
           onDelete={() => transition(CONFIRM)}
           onEdit={() => transition(EDIT)}
         />)}
