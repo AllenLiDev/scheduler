@@ -27,9 +27,54 @@ const Appointment = (props) => {
   return (
     <article className="appointment">
       <Header time={props.time} />
-      {props.interview ? <Show student={props.interview.student} interviewer={props.interview.interviewer} /> : <Empty />}
+      {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
+      {mode === SHOW && (
+        <Show
+          student={props.interview.student}
+          interviewer={props.interview.interviewer}
+          onDelete={() => transition(CONFIRM)}
+          onEdit={() => transition(EDIT)}
+        />)}
+      {mode === CREATE && (
+        <Form
+          interviewers={props.interviewers}
+          onSave={(name, interviewer) => save(name, interviewer)}
+          onCancel={() => back()}
+        />)}
+      {mode === SAVING && (
+        <Status
+          message="Saving"
+        />)}
+      {mode === DELETING && (
+        <Status
+          message="Deleting"
+        />)}
+      {mode === CONFIRM && (
+        <Confirm
+          message="Delete appointment?"
+          onCancel={() => back()}
+          onConfirm={() => cancelAppointment()}
+        />)}
+      {mode === EDIT && (
+        <Form
+          name={props.interview.student}
+          interviewer={props.interview.interviewer.id}
+          interviewers={props.interviewers}
+          onSave={(name, interviewer) => save(name, interviewer)}
+          onCancel={() => back()}
+        />)}
+      {mode === ERROR_SAVE && (
+        <ErrorComponent
+          message="Could not save"
+          onClose={() => back()}
+        />)}
+      {mode === ERROR_DELETE && (
+        <ErrorComponent
+          message="Could not delete"
+          onClose={() => back()}
+        />)}
     </article>
-  )
-}
+  );
+};
 
 export default Appointment;
