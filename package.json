@@ -41,7 +41,8 @@
     "@storybook/react": "^5.3.18",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^8.0.9",
-    "node-sass": "^4.11.0"
+    "node-sass": "^4.11.0",
+    "prop-types": "^15.7.2"
   },
   "jest": {
     "watchPathIgnorePatterns": [
