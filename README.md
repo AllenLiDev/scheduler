@@ -1,23 +1,52 @@
 # Interview Scheduler
 
+A single page application (SPA) built using React.
+
+Users can book, cancel appointments filtered by day of week and time slots.
+
+Technologies used: React, Storybook, Jest, Cypress, and Axios.
+
 ## Setup
 
-Install dependencies with `npm install`.
+1. Install dependencies with `npm install`.
 
-## Running Webpack Development Server
+2. Fork and clone the [Scheduler API](https://github.com/lighthouse-labs/scheduler-api) and follow the instructions to setup the database API. PostgreSQL is required for this.
 
-```sh
-npm start
-```
+3. Run ```npm start``` in the scheduler-api directory to start the database server.
+
+4. In another terminal, run ```npm start``` in the scheduler directory to start the webpack development server.
+
+## Screenshots
+Unavailable due to vagrant shut down.
+
 
 ## Running Jest Test Framework
+Jest was used to facilitate unit testing and integration testing.
 
 ```sh
 npm test
 ```
 
-## Running Storybook Visual Testbed
+## Running Cypress Test Framework
+Cypress was used to facilitate end-to-end testing.
 
+```sh
+npm run cypress
+```
+
+## Running Storybook Visual Testbed
+Storybook was used to build and test individual React components.
 ```sh
 npm run storybook
 ```
+
+## Dependencies
+
+- Axios
+- Classnames
+- Normalize.css
+- React
+- React-dom
+- React-hooks testing library
+- React-scripts
+- Node
