@@ -26,7 +26,7 @@ describe("Appointments", () => {
     cy.get('[data-testid=student-name-input]')
       .clear();
     cy.get('[data-testid=student-name-input]')
-      .type('Dexter Chan', { delay: 50 });
+      .type('Allen Li', { delay: 50 });
     cy.get("[alt='Tori Malcolm']")
       .click();
     cy.contains("Save")
