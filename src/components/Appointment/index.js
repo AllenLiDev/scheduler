@@ -1,12 +1,15 @@
 import React, { useEffect } from "react";
+
+import "./styles.scss";
+
 import Header from "./Header";
 import Show from "./Show";
 import Empty from "./Empty";
-import "./styles.scss";
 import Form from "./Form";
 import Status from "./Status";
 import Confirm from "./Confirm";
 import ErrorComponent from "./ErrorComponent";
+
 import useVisualMode from "hooks/useVisualMode";
 
 const Appointment = (props) => {
@@ -64,7 +67,7 @@ const Appointment = (props) => {
     <article className="appointment" data-testid="appointment">
       <Header time={props.time} />
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
-      {mode === SHOW && (
+      {mode === SHOW && props.interview && (
         <Show
           student={props.interview.student}
           interviewer={props.interview.interviewer ? props.interview.interviewer : "None"}
