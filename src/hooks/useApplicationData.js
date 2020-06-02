@@ -26,9 +26,10 @@ export default function useApplicationData() {
   function bookInterview(id, interview) {
     const appointment = { ...state.appointments[id], interview: { ...interview } };
     const appointments = { ...state.appointments, [id]: appointment };
+    const spotChange = (state.appointments[id].interview === null && interview !== null) ? -1 : 0;
 
     const currentDay = state.days.filter(day => day.appointments.includes(id))[0];
-    const newDay = { ...currentDay, spots: currentDay.spots - 1 };
+    const newDay = { ...currentDay, spots: currentDay.spots + spotChange };
     const newDays = state.days.map(day => (day.id === newDay.id ? newDay : day));
 
     return axios.put(`/api/appointments/${id}`, appointment)
