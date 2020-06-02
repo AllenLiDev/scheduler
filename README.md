@@ -17,7 +17,14 @@ Technologies used: React, Storybook, Jest, Cypress, and Axios.
 4. In another terminal, run ```npm start``` in the scheduler directory to start the webpack development server.
 
 ## Screenshots
-Unavailable due to vagrant shut down.
+### App Overview
+!["Overview"](https://github.com/AllenLiDev/scheduler/blob/master/screenshots/App.png?raw=true)
+### Appointment Card
+!["Appointment Card"](https://github.com/AllenLiDev/scheduler/blob/master/screenshots/Appointment.png?raw=true)
+### Booking / Editing an Appointment
+!["Booking an Appointment"](https://github.com/AllenLiDev/scheduler/blob/master/screenshots/Create.png?raw=true)
+### Cancelling an Appointment
+!["Cancelling an Appointment"](https://github.com/AllenLiDev/scheduler/blob/master/screenshots/Delete.png?raw=true)
 
 
 ## Running Jest Test Framework
