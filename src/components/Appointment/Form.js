@@ -17,7 +17,7 @@ const Form = (props) => {
     props.onCancel();
   };
 
-  function validate() {
+  const validate = () => {
     if (name === "") {
       setError("Student name cannot be blank");
       return;
@@ -49,7 +49,7 @@ const Form = (props) => {
       <section className="appointment__card-right">
         <section className="appointment__actions">
           <Button onClick={cancel} danger>Cancel</Button>
-          <Button onClick={() => validate()} confirm>Save</Button>
+          <Button onClick={validate} confirm>Save</Button>
         </section>
       </section>
     </main>
