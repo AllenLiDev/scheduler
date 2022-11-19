@@ -10,7 +10,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-hooks-testing-library": "^0.6.0",
-    "react-scripts": "^3.4.1"
+    "react-scripts": "^5.0.1"
   },
   "proxy": "http://localhost:3001",
   "secure": "false",
@@ -41,7 +41,7 @@
     "@storybook/addon-backgrounds": "^5.3.18",
     "@storybook/addon-links": "^5.3.18",
     "@storybook/addons": "^5.3.18",
-    "@storybook/react": "^5.3.18",
+    "@storybook/react": "^6.5.13",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^8.0.9",
     "node-sass": "^4.11.0",
